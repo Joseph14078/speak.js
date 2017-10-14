@@ -54,7 +54,7 @@
   $(function() {
     $('#play-btn').click(function() {
       var options;
-      console.log('Speech started');
+      console.log('Generating speech...');
       options = {
         amplitude: amplitude.value,
         wordgap: wordgap.value,
@@ -63,7 +63,10 @@
       };
       speak.play(textarea.value, options, function() {
         return console.log('Speech finished');
-      });
+      }, function(source) {
+				console.log('Speech started');
+				window.test = source;
+			});
       return false;
     });
   });
