@@ -5,9 +5,9 @@ A port of the eSpeak speech synthesizer from C++ to JavaScript using Emscripten.
 
 Enables text-to-speech on the web using only JavaScript and HTML5. or within Node.js as a module.
 
-Note: This is an official active fork of a following original project
+Note: This is a fork of
 
-  https://github.com/kripken/speak.js
+  https://github.com/logue/speak.js
 
 
 Usage
@@ -35,7 +35,7 @@ Options
 
 You can also specify some options with calling speak(), by doing
 
-      `speak.play('hello world', { option1: value1, option2: value2 .. }, onended)`
+      `speak.play('hello world', { option1: value1, option2: value2 .. }, onended, onstart)`
 
 available options are:
 
@@ -55,6 +55,8 @@ For example
       `speak.play('hello world', { pitch: 100 }, function(){console.log('completed!');});`
 
 will talk in a very high-pitched voice and output 'completed!' on the console at the completion.
+
+The onstart callback takes a single argument `source` which is the AudioBufferSourceNode created for the speech. This allows speech to be stopped at any point by calling `source.stop()`.
 
 Architecture
 ------------
